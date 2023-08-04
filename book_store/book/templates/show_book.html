@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="bg-primary p-4">
+    <h2 class="text-center p-3 text-white">Our Books</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
+        {% for n in data %}
+        <div class="col">
+            <div class="card h-100 bg-info shadow">
+              <div class="card-body text-white">
+                  <h6 class="card-title">ID : {{n.id}}</h6>
+                <h4 class="card-title">Book Name : {{n.book_name}}</h4>
+                <h5 class="card-title">Author : {{n.author}}</h5>
+                <h5 class="card-title"> Catagory : {{n.catagory}}</h5>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Fist Publication {{n.first_pub}}</small></br>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last Publication {{n.last_pub}}</small>
+              </div>
+              <div class="card-footer">
+                <a href="{% url 'editbook' n.id %}" class="btn btn-warning btn-sm">Edit</a> <a href="{% url 'deletebook' n.id %}" class="btn btn-danger btn-sm">Delete</a>
+              </div>
+            </div>
+          </div>{% endfor %}
+       
+        
+      </div>
+</div>
+{% endblock content %}
